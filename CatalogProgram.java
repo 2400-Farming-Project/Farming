@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -6,28 +7,23 @@ public class CatalogProgram {
     public static void main(String[] args) {
         Scanner scr = new Scanner(System.in);
 
-        System.out.println("Lopez Urban Farm Catalog");
-        System.out.println("\nMENU - Enter a number to proceed");
-        System.out.println("\n1 - Search Catalog");
-        System.out.println("\n2 - Add new item");
-        System.out.println("\n3 - Remove item");
-        System.out.println("\n4 - Edit Items");
-        System.out.println("\n5 - Add new customer");
-        System.out.println("\n6 - Remove customer");
-        System.out.println("\n7 - Edit customer");
-        System.out.println("\n8 - Upload files");
-        System.out.println("\n9 - View current catalog");
-        System.out.println("\n10 - View customer logs");
-        System.out.println("\n11 - Exit Program");
+        printMenu();
+       
+        int numChoice = 0;
 
-        int numChoice = scr.nextInt();
-
-        while (numChoice < 1 || numChoice > 11){
-            System.out.println("Invalid Selection. Please Choose Again (1-10)");
-            numChoice = scr.nextInt();
-        }
-
-        scr.close();
+        do {
+            try {
+                System.out.println("\nEnter your choice: ");
+                numChoice = scr.nextInt();
+                if (numChoice < 1 || numChoice > 11)
+                    System.out.println("\nInvalid Selection. Please Choose Again (1-11)");
+            } catch (InputMismatchException e) {
+                System.out.println("\nInvalid Selection. Please Choose Again (1-11)");
+                scr.next();
+                numChoice = 0;
+            }    
+        
+        } while ((numChoice < 1 || numChoice > 11)); 
 
         switch (numChoice) {
             case 1:
@@ -69,5 +65,23 @@ public class CatalogProgram {
                 //System.exit(InputMismatchException);
                 break;
         }
+        scr.close();
+    }
+
+    public static void printMenu(){
+        System.out.println("Lopez Urban Farm Catalog");
+        System.out.println("\nMENU - Enter a number to proceed");
+        System.out.println("\n1 - Search Catalog");
+        System.out.println("\n2 - Add new item");
+        System.out.println("\n3 - Remove item");
+        System.out.println("\n4 - Edit Items");
+        System.out.println("\n5 - Add new customer");
+        System.out.println("\n6 - Remove customer");
+        System.out.println("\n7 - Edit customer");
+        System.out.println("\n8 - Upload files");
+        System.out.println("\n9 - View current catalog");
+        System.out.println("\n10 - View customer logs");
+        System.out.println("\n11 - Exit Program");
+
     }
 }
