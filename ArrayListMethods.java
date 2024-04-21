@@ -19,3 +19,14 @@ public static void addItem(String itemName, int quantity) {
   }
   System.out.println("Catalog is full");
 }
+
+public static void showCatalog() {
+  System.out.println("Contents of Catalog");
+   for(int i = 0; i < itemNames.length; i++) {
+     if (itemNames[i] != null) {
+       System.out.println(itemNames[i] + "stock: " + quantityOfItem[i]);
+       }
+     }
+  }
+
+}
