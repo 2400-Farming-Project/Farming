@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 public class ArrayListMethods {
 private static final int MAX_ITEMS = 100;
@@ -20,6 +20,11 @@ public static void addItem(String itemName, int quantity) {
   System.out.println("Catalog is full");
 }
 
+public static void removeItem(String itemName, int quantity) {
+  
+}
+    
+  
 public static void showCatalog() {
   System.out.println("Contents of Catalog");
    for(int i = 0; i < itemNames.length; i++) {
