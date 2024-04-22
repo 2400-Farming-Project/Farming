@@ -7,6 +7,15 @@ private static final int MAX_ITEMS = 100;
 private static String[] itemNames = new String[MAX_ITEMS];
 private static int[] quantityOfItem = new int[MAX_ITEMS];
   
+public static void searchItem(String itemName){
+  for (int i = 0; i < itemNames.length; i++) {
+    if (itemName.equals(itemNames[i])) {
+      System.out.println(itemName + "quantity: " + quantityOfItem[i]);
+      return();
+    }
+  }
+  System.out.println(itemName + "not found in the catalog");
+}  
   
 public static void addItem(String itemName, int quantity) {
   for (int i = 0; i < itemNames.length; i++) {
