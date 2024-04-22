@@ -19,8 +19,15 @@ public static void searchItem(String itemName){
   
 public static void addItem(String itemName, int quantity) {
   for (int i = 0; i < itemNames.length; i++) {
-  if (itemNames[i] == null) {
-  itemNames[i] = itemName;
+    if (itemName.equals(itemNames[i])){
+      quantityOfItem[i] += quantity;
+      System.out.println(itemName + "quantity: " + quantityOfItem[i]);
+      return;
+    }
+  }
+  for (int i = 0; i < itemNames.length; i++) {
+    if (itemNames[i] == null) {
+    itemNames[i] = itemName;
     quantityOfItem[i] = quantity;
     System.out.println( itemName + "added to the catalog with quantity" + quantity + ".");
     return;
@@ -28,6 +35,7 @@ public static void addItem(String itemName, int quantity) {
   }
   System.out.println("Catalog is full");
 }
+
 
 public static void removeItem(String itemName, int quantity) {
   for (int i = 0; i < itemNames.length; i++) {
