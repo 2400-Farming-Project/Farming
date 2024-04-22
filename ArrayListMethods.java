@@ -63,6 +63,22 @@ public static void editItem(String itemName, String newItemName) {
     }
   System.out.println("Original item " + itemName + " not found in catalog.");
 }
+  
+public static void addCustomer(String customerName){
+  for (int i = 0; i < customerNames.length; i++) {
+    if (customerName.equals(customerNames[i])) {
+      System.out.println(customerName + " is already in the customer list.");
+      return;
+    }
+  }
+  for (int i=0; i < customerNames.length; i++) {
+    if (customerNames[i] == null) {
+      customerNames[i] = customerName;
+      System.out.println(customerName + " added to the customer list.");
+      return;
+    }
+  }
+}
     
   
 public static void showCatalog() {
