@@ -79,7 +79,17 @@ public static void addCustomer(String customerName){
     }
   }
 }
-    
+
+public static void removeCustomer(String customerName) {
+  for (int i = 0; i < customerNames.length; i++) {
+    if (customerName.equals(customerNames[i])) {
+      customerNames[i] = null;
+      System.out.println(customerName + " removed from the customer list.");
+      return;
+    }
+  }
+  System.out.println(customerName + " not found in the customer list.");
+}
   
 public static void showCatalog() {
   System.out.println("Contents of Catalog");
