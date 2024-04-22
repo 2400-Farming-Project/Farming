@@ -11,7 +11,7 @@ public static void searchItem(String itemName){
   for (int i = 0; i < itemNames.length; i++) {
     if (itemName.equals(itemNames[i])) {
       System.out.println(itemName + "quantity: " + quantityOfItem[i]);
-      return();
+      return;
     }
   }
   System.out.println(itemName + "not found in the catalog");
@@ -23,7 +23,7 @@ public static void addItem(String itemName, int quantity) {
   itemNames[i] = itemName;
     quantityOfItem[i] = quantity;
     System.out.println( itemName + "added to the catalog with quantity" + quantity + ".");
-    return();
+    return;
     }
   }
   System.out.println("Catalog is full");
@@ -42,9 +42,18 @@ public static void removeItem(String itemName, int quantity) {
       } else {
         System.out.println(quantity + " " + itemName + " removed from the catalog. Quantity leftover: " + quantityOfItem[i]);
       }
-      return();
+      return;
     }
   }
+}
+public static void editItem(String itemName, String newItemName) {
+  for (int i = 0; i < itemNames.length; i++) {
+    if (itemName.equals(itemNames[i])) {
+      itemNames[i] = newItemName;
+      System.out.println(itemName + " renamed to " + newItemName);
+      return;
+    }
+  System.out.println("Original item " + itemName + " not found in catalog.");
 }
     
   
