@@ -1,7 +1,6 @@
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.lang.Thread;
 
 
 public class CatalogProgram {
@@ -11,7 +10,6 @@ public class CatalogProgram {
         printMenu();
        
         int numChoice = 0;
-        boolean exitProgram = false;
 
         do {
             try {
@@ -25,11 +23,11 @@ public class CatalogProgram {
                 numChoice = 0;
             }    
         
-        } while ((exitProgram == false)); 
+        } while ((numChoice < 1 || numChoice > 11)); 
 
         switch (numChoice) {
             case 1:
-                System.out.println("Enter item name to search");
+                System.out.println("Booting Search");
                 break;
             case 2:
                 System.out.println("Booting Add new item");
@@ -54,28 +52,21 @@ public class CatalogProgram {
                 break;
             case 9:
                 System.out.println("Printing current catalog");
-                
                 break;
             case 10:
                 System.out.println("Printing current customer logs");
                 break;
             case 11:
                 System.out.println("Exiting");
-                exitProgram = true;
+                System.exit(0);
                 break;        
             default:
-                System.out.println("Invalid Selection. Bypassed Input Validation. Going back to Menu");
+                System.out.println("Invalid Selection. Bypassed Input Validation. Exiting Program");
                 //System.exit(InputMismatchException);
                 break;
         }
         scr.close();
-
-        if (exitProgram){
-            System.exit(0);
-        }
-        
     }
-    
 
     public static void printMenu(){
         System.out.println("Lopez Urban Farm Catalog");
@@ -93,5 +84,4 @@ public class CatalogProgram {
         System.out.println("\n11 - Exit Program");
 
     }
-    
 }
