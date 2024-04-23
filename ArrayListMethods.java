@@ -3,9 +3,12 @@ import java.util.Scanner;
 
 public class ArrayListMethods {
 private static final int MAX_ITEMS = 100;
+private static final int MAX_CUSTOMERS = 100;
   
 private static String[] itemNames = new String[MAX_ITEMS];
 private static int[] quantityOfItem = new int[MAX_ITEMS];
+private static String [] customerNames = new String[MAX_CUSTOMERS];
+private static int[] customerQuantity = new int[MAX_CUSTOMERS]
   
 public static void searchItem(String itemName){
   for (int i = 0; i < itemNames.length; i++) {
@@ -61,11 +64,9 @@ public static void editItem(String itemName, String newItemName) {
       System.out.println(itemName + " renamed to " + newItemName);
       return;
     }
+  }
   System.out.println("Original item " + itemName + " not found in catalog.");
 }
-<<<<<<< HEAD
-    
-=======
   
 public static void addCustomer(String customerName){
   for (int i = 0; i < customerNames.length; i++) {
@@ -93,15 +94,23 @@ public static void removeCustomer(String customerName) {
   }
   System.out.println(customerName + " not found in the customer list.");
 }
->>>>>>> 19c00ef1acff31f8500b6560be1875c8f749afdb
+
+public static void showCustomerLog() {
+  System.out.println("Customer Log:");
+   for(int i = 0; i < customerNames.length; i++) {
+     if (customerNames[i] != null) {
+       System.out.println(customerNames[i] + "; Crops taken: " + customerQuantity[i]);
+     }
+   }
+}
   
 public static void showCatalog() {
   System.out.println("Contents of Catalog");
    for(int i = 0; i < itemNames.length; i++) {
      if (itemNames[i] != null) {
-       System.out.println(itemNames[i] + "stock: " + quantityOfItem[i]);
-       }
-     }
+       System.out.println(itemNames[i] + "; Stock: " + quantityOfItem[i]);
+      }
+    }
   }
 
 }
