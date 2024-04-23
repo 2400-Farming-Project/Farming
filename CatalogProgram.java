@@ -1,6 +1,7 @@
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 public class CatalogProgram {
@@ -27,10 +28,16 @@ public class CatalogProgram {
 
         switch (numChoice) {
             case 1:
-                System.out.println("Booting Search");
+                System.out.println("Enter item to search for");
+                String searchForItem = scr.next();
+                ArrayListMethods.searchItem(searchForItem);
                 break;
             case 2:
-                System.out.println("Booting Add new item");
+                System.out.println("Enter name for item");
+                String newItemName = scr.next();
+                System.out.println("Enter quantity of item");
+                int quantityofItem = scr.nextInt();
+                ArrayListMethods.addItem(newItemName, quantityofItem);
                 break;
             case 3:
                 System.out.println("Booting Remove Item");
@@ -52,6 +59,7 @@ public class CatalogProgram {
                 break;
             case 9:
                 System.out.println("Printing current catalog");
+                ArrayListMethods.showCatalog();
                 break;
             case 10:
                 System.out.println("Printing current customer logs");

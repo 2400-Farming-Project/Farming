@@ -8,7 +8,7 @@ private static final int MAX_CUSTOMERS = 100;
 private static String[] itemNames = new String[MAX_ITEMS];
 private static int[] quantityOfItem = new int[MAX_ITEMS];
 private static String [] customerNames = new String[MAX_CUSTOMERS];
-private static int[] customerQuantity = new int[MAX_CUSTOMERS]
+private static int[] customerQuantity = new int[MAX_CUSTOMERS];
   
 public static void searchItem(String itemName){
   for (int i = 0; i < itemNames.length; i++) {
