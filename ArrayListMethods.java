@@ -63,7 +63,37 @@ public static void editItem(String itemName, String newItemName) {
     }
   System.out.println("Original item " + itemName + " not found in catalog.");
 }
+<<<<<<< HEAD
     
+=======
+  
+public static void addCustomer(String customerName){
+  for (int i = 0; i < customerNames.length; i++) {
+    if (customerName.equals(customerNames[i])) {
+      System.out.println(customerName + " is already in the customer list.");
+      return;
+    }
+  }
+  for (int i=0; i < customerNames.length; i++) {
+    if (customerNames[i] == null) {
+      customerNames[i] = customerName;
+      System.out.println(customerName + " added to the customer list.");
+      return;
+    }
+  }
+}
+
+public static void removeCustomer(String customerName) {
+  for (int i = 0; i < customerNames.length; i++) {
+    if (customerName.equals(customerNames[i])) {
+      customerNames[i] = null;
+      System.out.println(customerName + " removed from the customer list.");
+      return;
+    }
+  }
+  System.out.println(customerName + " not found in the customer list.");
+}
+>>>>>>> 19c00ef1acff31f8500b6560be1875c8f749afdb
   
 public static void showCatalog() {
   System.out.println("Contents of Catalog");
