@@ -23,7 +23,7 @@ public class CatalogProgram {
                 numChoice = 0;
             }    
         
-        } while ((numChoice < 1 || numChoice > 11)); 
+        } while ((numChoice < 1 || numChoice > 12)); 
 
         switch (numChoice) {
             case 1:
@@ -57,9 +57,17 @@ public class CatalogProgram {
                 System.out.println("Printing current customer logs");
                 break;
             case 11:
+                System.out.println("Enter customer name to add to queue");
+            case 12:
+                System.out.println("Removing first customer in queue");
+                System.exit(0);
+                break;
+            case 13:
+                System.out.println("Printing next customer");
+            case 14:
                 System.out.println("Exiting");
                 System.exit(0);
-                break;        
+                break;           
             default:
                 System.out.println("Invalid Selection. Bypassed Input Validation. Exiting Program");
                 //System.exit(InputMismatchException);
@@ -81,7 +89,10 @@ public class CatalogProgram {
         System.out.println("\n8 - Upload files");
         System.out.println("\n9 - View current catalog");
         System.out.println("\n10 - View customer logs");
-        System.out.println("\n11 - Exit Program");
+        System.out.println("\n11 - Add customer to queue");
+        System.out.println("\n12 - Remove customer from queue");
+        System.out.println("\n13 -  View next customer in queue");
+        System.out.println("\n14 - Exit Program");
 
     }
 }
