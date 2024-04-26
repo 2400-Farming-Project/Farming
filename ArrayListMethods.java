@@ -141,9 +141,14 @@ public class ArrayListMethods {
   }
 
   public void showCustomerLog() {
-    //Needs code
+    System.out.println("Contents of Customer Log:");
+    for (int i = 0; i < customerNames.size(); i++) {
+      System.out.println(customerNames.get(i) + " has taken " + customerQuantity.get(i) + " crops");
+    }
+    if (customerNames.isEmpty()) {
+      System.out.println("  Empty");
+    }
   }
-    
-  
 
+  
 }
