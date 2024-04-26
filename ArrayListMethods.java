@@ -84,7 +84,13 @@ public class ArrayListMethods {
   }
 
   public void searchCustomer(String customerName) {
-    //Needs code
+    int index = customerNames.indexOf(customerName);
+    if (index != -1) {
+      System.out.println(customerName + " stock: " + customerQuantity.get(index));
+    }
+    else {
+      System.out.println(customerName + " not found in the customer logs.");
+    }
   }
 
   public void addCustomer(String customerName, int quantity){
