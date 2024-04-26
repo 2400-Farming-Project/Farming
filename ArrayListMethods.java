@@ -103,68 +103,70 @@ public class ArrayListMethods {
   public void showCatalog() {
     System.out.println("Contents of Catalog:");
     for (int i = 0; i < itemNames.size(); i++) {
-      System.out.println(itemNames.get(i) + " stock: " + quantityOfItem.get(i));
+        System.out.println(itemNames.get(i) + " stock: " + quantityOfItem.get(i));
+    }
+    if (itemNames.isEmpty()) {
+      System.out.print("       Emtpy");
     }
   }
 
   public void searchCustomer(String customerName) {
     int index = customerNames.indexOf(customerName);
-      if (index != -1) {
-        System.out.println(customerName + " stock: " + customerQuantity.get(index));
-      }
-      else {
+    if (index != -1) {
+      System.out.println(customerName + " stock: " + customerQuantity.get(index));
+    }
+    else {
         System.out.println(customerName + " not found in the customer logs.");
-      }
+    }
   }
 
   public void addCustomer(String customerName, int quantity){
     int index = customerNames.indexOf(customerName);
-      if (index != -1) {
-        customerQuantity.set(index, customerQuantity.get(index) + quantity);
-        System.out.println(customerName + " quantity updated: " + customerQuantity.get(index));
-      }
-      else {
-        customerNames.add(customerName);
-        customerQuantity.add(quantity);
-        System.out.println(customerName + " added to the customer log with quantity: " + quantity);
-      }
+    if (index != -1) {
+      customerQuantity.set(index, customerQuantity.get(index) + quantity);
+      System.out.println(customerName + " quantity updated: " + customerQuantity.get(index));
+    }
+    else {
+      customerNames.add(customerName);
+      customerQuantity.add(quantity);
+      System.out.println(customerName + " added to the customer log with quantity: " + quantity);
+    }
   }
 
   public void removeCustomer(String customerName) {
     int index = customerNames.indexOf(customerName);
-      if (index != -1) {
-        customerNames.remove(index);
-        customerQuantity.remove(index);
-        System.out.println(customerName + " removed from the catalog.");
-      }
-      else {
-        System.out.println(customerName + " not found in the catalog.");
-      }
+    if (index != -1) {
+      customerNames.remove(index);
+      customerQuantity.remove(index);
+      System.out.println(customerName + " removed from the catalog.");
+    }
+    else {
+      System.out.println(customerName + " not found in the catalog.");
+    }
   }
 
   public void editCustomerName(String customerName, String newCustomerName) {
     int index = customerNames.indexOf(customerName);
-      if (index != -1) {
-        customerNames.set(index, newCustomerNames);
-        System.out.println(customerName + " renamed to " + newCustomerName);
-      }
-      else {
-        System.out.println("Item " + customerName + " not found in catalog.");
-      }
+    if (index != -1) {
+      customerNames.set(index, newCustomerNames);
+      System.out.println(customerName + " renamed to " + newCustomerName);
+    }
+    else {
+      System.out.println("Item " + customerName + " not found in catalog.");
+    }
   }
 
   public void editCustomerQuantity(int customerAmount, int newCustomerAmount) {
     int index = customerNames.indexOf(customerName);
     int customerAmount = 0;
-
-      if (index != -1) {
-        customerAmount = customerQuantity.get(index);
-        customerQuantity.set(index, newCustomerAmount);
-        System.out.println(customerAmount + " renamed to " + newCustomerAmount);
-      }
-      else {
-        System.out.println(customerName + " was not found in customer logs, no existing quantity to change");
-      }
+    if (index != -1) {
+      customerAmount = customerQuantity.get(index);
+      customerQuantity.set(index, newCustomerAmount);
+      System.out.println(customerAmount + " renamed to " + newCustomerAmount);
+    }
+    else {
+      System.out.println(customerName + " was not found in customer logs, no existing quantity to change");
+    }
   }
 
   public void showCustomerLog() {
