@@ -56,7 +56,6 @@ public class ArrayListMethods {
             itemNames.remove(index);
             quantityOfItem.remove(index);
             System.out.println(itemName + " removed from the catalog.");
-              
           }
         } 
       } else {
@@ -67,15 +66,21 @@ public class ArrayListMethods {
     }
   }
 
-  public static void editItem(String itemName, String newItemName) {
-    for (int i = 0; i < itemNames.length; i++) {
-      if (itemName.equals(itemNames[i])) {
-        itemNames[i] = newItemName;
-        System.out.println(itemName + " renamed to " + newItemName);
-        return;
-      }
+  public void editItem(String itemName, String newItemName) {
+    int index = itemNames.indexOf(itemName);
+    if (index != -1) {
+      itemNames.set(index, newItemName);
+      System.out.println(itemName + " renamed to " + newItemName);
+    } else {
+      System.out.println("Item " + itemName + " not found in catalog.");
     }
-    System.out.println("Original item " + itemName + " not found in catalog.");
+  }
+
+  public void showCatalog() {
+    System.out.println("Contents of Catalog:");
+    for (int i = 0; i < itemNames.size(); i++) {
+      System.out.println(itemNames.get(i) + " stock: " + quantityOfItem.get(i));
+    }
   }
     
   public static void addCustomer(String customerName){
@@ -114,13 +119,6 @@ public class ArrayListMethods {
     }
   }
     
-  public static void showCatalog() {
-    System.out.println("Contents of Catalog");
-    for(int i = 0; i < itemNames.length; i++) {
-      if (itemNames[i] != null) {
-        System.out.println(itemNames[i] + "; Stock: " + quantityOfItem[i]);
-        }
-      }
-    }
+  
 
 }
