@@ -43,7 +43,7 @@ public class ArrayListMethods {
 
 
   public void removeItem(String itemName, int quantity) {
-    int index = itemNames.indexOf(itemName);
+		int index = itemNames.indexOf(itemName);
     if (index != -1) {
       int currentQuantity = quantityOfItem.get(index);
       if (currentQuantity >= quantity) {
@@ -52,19 +52,43 @@ public class ArrayListMethods {
         if (quantityOfItem.get(index) == 0) {
           System.out.println("Do you want to remove " + itemName + " from the Catalog (Yes or No)");
           String removeChoice = scr.next();
-          if (removeChoice == "Yes" || removeChoice == "yes" || removeChoice == "y" || removeChoice == "Y") {
-            itemNames.remove(index);
-            quantityOfItem.remove(index);
-            System.out.println(itemName + " removed from the catalog.");
+          switch (removeChoice) {
+            case "Yes":
+              itemNames.remove(index);
+              quantityOfItem.remove(index);
+              System.out.println(itemName + " removed from the catalog.");
+              break;
+            case "yes":
+              itemNames.remove(index);
+              quantityOfItem.remove(index);
+              System.out.println(itemName + " removed from the catalog.");
+              break;
+            case "y":
+              itemNames.remove(index);
+              quantityOfItem.remove(index);
+              System.out.println(itemName + " removed from the catalog.");
+              break;
+            case "Y":
+              itemNames.remove(index);
+              quantityOfItem.remove(index);
+              System.out.println(itemName + " removed from the catalog.");
+              break;
+            case "YES":
+              itemNames.remove(index);
+              quantityOfItem.remove(index);
+              System.out.println(itemName + " removed from the catalog.");
+              break;
+            default:
+              System.out.println("Will keep " + itemName + " with zero stock");
+	                	
           }
-        } 
+        }    
       } else {
-          System.out.println("Not enough " + itemName + " in stock.");
+          System.out.println(itemName + " not found in the catalog.");
       }
-    } else {
-        System.out.println(itemName + " not found in the catalog.");
+      
     }
-  }
+	}
 
   public void editItem(String itemName, String newItemName) {
     int index = itemNames.indexOf(itemName);
