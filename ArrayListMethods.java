@@ -16,56 +16,57 @@ public class ArrayListMethods {
     quantityOfItem = new ArrayList<>(MAX_CROPS);
     customerNames = new ArrayList<>(MAX_CUSTOMERS);
     customerQuantity = new ArrayList<>(MAX_CUSTOMERS);
-    
+      
+  }
+      
+  public void searchItem(String itemName) {
+    int index = itemNames.indexOf(itemName);
+    if (index != -1) {
+      System.out.println(itemName + " stock: " + quantityOfItem.get(index));
+    } else {
+      System.out.println(itemName + " not found in the catalog.");
     }
-    
-  public static void searchItem(String itemName){
-    for (int i = 0; i < itemNames.length; i++) {
-      if (itemName.equals(itemNames[i])) {
-        System.out.println(itemName + "quantity: " + quantityOfItem[i]);
-        return;
-      }
+
+  }
+      
+  public void addItem(String itemName, int quantity) {
+    int index = itemNames.indexOf(itemName);
+    if (index != -1) {
+      quantityOfItem.set(index, quantityOfItem.get(index) + quantity);
+      System.out.println(itemName + " quantity updated: " + quantityOfItem.get(index));
+    } else {
+      itemNames.add(itemName);
+      quantityOfItem.add(quantity);
+      System.out.println(itemName + " added to the catalog with quantity: " + quantity);
     }
-    System.out.println(itemName + "not found in the catalog");
-  }  
-    
-  public static void addItem(String itemName, int quantity) {
-    for (int i = 0; i < itemNames.length; i++) {
-      if (itemName.equals(itemNames[i])){
-        quantityOfItem[i] += quantity;
-        System.out.println(itemName + "quantity: " + quantityOfItem[i]);
-        return;
-      }
-    }
-    for (int i = 0; i < itemNames.length; i++) {
-      if (itemNames[i] == null) {
-      itemNames[i] = itemName;
-      quantityOfItem[i] = quantity;
-      System.out.println( itemName + "added to the catalog with quantity" + quantity + ".");
-      return;
-      }
-    }
-    System.out.println("Catalog is full");
   }
 
 
-  public static void removeItem(String itemName, int quantity) {
-    for (int i = 0; i < itemNames.length; i++) {
-      if (itemName.equals(itemNames[i])) {
-        quantityOfItem[i] -= quantity;
-        if (quantityOfItem[i]<0){
-          quantityOfItem[i] = 0;
-        }
-        if (quantityOfItem[i] <= 0) {
-          itemNames[i] = null;
-          System.out.println(itemName + "removed from the catalog with quantity.");
-        } else {
-          System.out.println(quantity + " " + itemName + " removed from the catalog. Quantity leftover: " + quantityOfItem[i]);
-        }
-        return;
+  public void removeItem(String itemName, int quantity) {
+    int index = itemNames.indexOf(itemName);
+    if (index != -1) {
+      int currentQuantity = quantityOfItem.get(index);
+      if (currentQuantity >= quantity) {
+        quantityOfItem.set(index, currentQuantity - quantity);
+        System.out.println(quantity + " " + itemName + " removed from the catalog. Quantity left: " + quantityOfItem.get(index));
+        if (quantityOfItem.get(index) == 0) {
+          System.out.println("Do you want to remove " + itemName + " from the Catalog (Yes or No)");
+          String removeChoice = scr.next();
+          if (removeChoice == "Yes" || removeChoice == "yes" || removeChoice == "y" || removeChoice == "Y") {
+            itemNames.remove(index);
+            quantityOfItem.remove(index);
+            System.out.println(itemName + " removed from the catalog.");
+              
+          }
+        } 
+      } else {
+          System.out.println("Not enough " + itemName + " in stock.");
       }
+    } else {
+        System.out.println(itemName + " not found in the catalog.");
     }
   }
+
   public static void editItem(String itemName, String newItemName) {
     for (int i = 0; i < itemNames.length; i++) {
       if (itemName.equals(itemNames[i])) {
