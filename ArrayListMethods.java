@@ -148,7 +148,7 @@ public class ArrayListMethods {
   public void editCustomerName(String customerName, String newCustomerName) {
     int index = customerNames.indexOf(customerName);
     if (index != -1) {
-      customerNames.set(index, newCustomerNames);
+      customerNames.set(index, newCustomerName);
       System.out.println(customerName + " renamed to " + newCustomerName);
     }
     else {
@@ -156,18 +156,17 @@ public class ArrayListMethods {
     }
   }
 
-  public void editCustomerQuantity(int customerAmount, int newCustomerAmount) {
+  public void editCustomerQuantity(String customerName, int newCustomerAmount) {
     int index = customerNames.indexOf(customerName);
     int customerAmount = 0;
     if (index != -1) {
       customerAmount = customerQuantity.get(index);
       customerQuantity.set(index, newCustomerAmount);
       System.out.println(customerAmount + " renamed to " + newCustomerAmount);
-    }
-    else {
+    } else {
       System.out.println(customerName + " was not found in customer logs, no existing quantity to change");
     }
-  }
+ }
 
   public void showCustomerLog() {
     System.out.println("Contents of Customer Log:");
