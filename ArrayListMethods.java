@@ -107,7 +107,15 @@ public class ArrayListMethods {
   }
 
   public void removeCustomer(String customerName) {
-    //Needs code
+    int index = customerNames.indexOf(customerName);
+      if (index != -1) {
+        customerNames.remove(index);
+        customerQuantity.remove(index);
+        System.out.println(customerName + " removed from the catalog.");
+      }
+      else {
+        System.out.println(customerName + " not found in the catalog.");
+      }
   }
 
   public void editCustomerName(String customerName, String newCustomerName) {
