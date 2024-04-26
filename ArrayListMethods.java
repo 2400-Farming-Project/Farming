@@ -119,7 +119,14 @@ public class ArrayListMethods {
   }
 
   public void editCustomerName(String customerName, String newCustomerName) {
-    //Needs code
+    int index = customerNames.indexOf(customerName);
+      if (index != -1) {
+        customerNames.set(index, newCustomerNames);
+        System.out.println(customerName + " renamed to " + newCustomerName);
+      }
+      else {
+        System.out.println("Item " + customerName + " not found in catalog.");
+      }
   }
 
   public void editCustomerQuantity(int customerAmount, int newCustomerAmount) {
