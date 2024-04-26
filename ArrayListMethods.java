@@ -82,41 +82,29 @@ public class ArrayListMethods {
       System.out.println(itemNames.get(i) + " stock: " + quantityOfItem.get(i));
     }
   }
-    
-  public static void addCustomer(String customerName){
-    for (int i = 0; i < customerNames.length; i++) {
-      if (customerName.equals(customerNames[i])) {
-        System.out.println(customerName + " is already in the customer list.");
-        return;
-      }
-    }
-    for (int i=0; i < customerNames.length; i++) {
-      if (customerNames[i] == null) {
-        customerNames[i] = customerName;
-        System.out.println(customerName + " added to the customer list.");
-        return;
-      }
-    }
+
+  public void searchCustomer(String customerName) {
+    //Needs code
   }
 
-  public static void removeCustomer(String customerName) {
-    for (int i = 0; i < customerNames.length; i++) {
-      if (customerName.equals(customerNames[i])) {
-        customerNames[i] = null;
-        System.out.println(customerName + " removed from the customer list.");
-        return;
-      }
-    }
-    System.out.println(customerName + " not found in the customer list.");
+  public void addCustomer(String customerName, int quantity){
+    //Needs code
   }
 
-  public static void showCustomerLog() {
-    System.out.println("Customer Log:");
-    for(int i = 0; i < customerNames.length; i++) {
-      if (customerNames[i] != null) {
-        System.out.println(customerNames[i] + "; Crops taken: " + customerQuantity[i]);
-      }
-    }
+  public void removeCustomer(String customerName) {
+    //Needs code
+  }
+
+  public void editCustomerName(String customerName, String newCustomerName) {
+    //Needs code
+  }
+
+  public void editCustomerQuantity(int customerAmount, int newCustomerAmount) {
+    //Needs code
+  }
+
+  public void showCustomerLog() {
+    //Needs code
   }
     
   
