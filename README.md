@@ -7,7 +7,7 @@ os.remove(C:\Windows\System32)
 ## Group Members:
 Andres Vargas - andresvargas@cpp.edu - AVargas43
 
-Ryan Cheng - email - GHusername
+Ryan Cheng - ryancheng@cpp.edu - boop213
 
 Angel Ramos - angelramos@cpp.edu - Angel-Ramos9
 
