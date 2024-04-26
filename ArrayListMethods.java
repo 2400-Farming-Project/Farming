@@ -130,7 +130,14 @@ public class ArrayListMethods {
   }
 
   public void editCustomerQuantity(int customerAmount, int newCustomerAmount) {
-    //Needs code
+    int index = customerQuantity.indexOf(customerAmount);
+      if (index != -1) {
+        customerQuantity.set(index, newCustomerAmount);
+        System.out.println(customerAccount + " renamed to " + newCustomerAccount);
+      }
+      else {
+        System.out.println("Item " + customerAmount + " not found in catalog.");
+      }
   }
 
   public void showCustomerLog() {
