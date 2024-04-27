@@ -42,6 +42,7 @@ public class CatalogProgram {
 	                String addCropName = scr.next();
 	                System.out.println("Enter quantity to add of crop");
 	                int addCropQuantity = scr.nextInt();
+					arrayListMethods.checkForResizeCrops();
 	                arrayListMethods.addItem(addCropName, addCropQuantity);
 	                break;
 	            case 3:

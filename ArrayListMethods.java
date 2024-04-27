@@ -1,14 +1,17 @@
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
+
 
 public class ArrayListMethods {
   private static List<String> itemNames;
   private static List<Integer> quantityOfItem;
   private static List<String> customerNames;
   private static List<Integer> customerQuantity;
-  private final int MAX_CROPS = 100;
-  private final int MAX_CUSTOMERS = 100;
+  private final int MAX_CROPS = 2;
+  private final int MAX_CUSTOMERS = 2;
+  private int resizable_crops = MAX_CROPS;
+  private int resizable_customers = MAX_CUSTOMERS;
   Scanner scr = new Scanner(System.in);
 
   public ArrayListMethods() {
@@ -176,6 +179,32 @@ public class ArrayListMethods {
     if (customerNames.isEmpty()) {
       System.out.println("  Empty");
     }
+  }
+
+  public void checkForResizeCrops() {
+    if (itemNames.size() >= resizable_crops);
+      //resizable_crops *= 2;
+      //((ArrayList<String>)itemNames).ensureCapacity(resizable_crops);
+      //((ArrayList<Integer>)quantityOfItem).ensureCapacity(resizable_crops);
+  }
+
+  public void checkForResizeCustomers() {
+    if (customerNames.size() >= resizable_customers)
+      resizable_customers *= 2;
+      ((ArrayList<String>)customerNames).ensureCapacity(resizable_customers);
+      ((ArrayList<Integer>)customerQuantity).ensureCapacity(resizable_customers);
+  }
+
+  public int inputValidationInt(Scanner choice){
+    int input;
+    do {
+      while (!choice.hasNextInt()) {
+        System.out.println("Please enter a valid number (greater than -1)");
+        choice.next();
+      }
+      input = choice.nextInt();
+    } while (input < 0);  
+    return input;
   }
 
   
