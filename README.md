@@ -13,5 +13,5 @@ Angel Ramos - angelramos@cpp.edu - Angel-Ramos9
 
 Mon Sarder - mssarder@cpp.edu - Monsterous3110
 
-Emmanuel Ricardo - email - GHusername
+Emmanuel Ricardo - elricardo@cpp.edu - RiceWidBeans
 
