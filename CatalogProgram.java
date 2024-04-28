@@ -1,4 +1,3 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,6 +14,9 @@ public class CatalogProgram {
         
         printMenu();
        
+		customerQueue.uploadQueueFiles();
+		arrayListMethods.uploadArrayFiles();
+		
         int numChoice = 0;
         do {
 	        do {
@@ -22,9 +24,9 @@ public class CatalogProgram {
 	                System.out.println("\nEnter a menu option: ");
 	                numChoice = scr.nextInt();
 	                if (numChoice < 1 || numChoice > 15)
-	                    System.out.println("\nInvalid Selection. Please Choose Again (1-11)");
+	                    System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
 	            } catch (InputMismatchException e) {
-	                System.out.println("\nInvalid Selection. Please Choose Again (1-11)");
+	                System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
 	                scr.next();
 	                numChoice = 0;
 	            }    
@@ -41,7 +43,7 @@ public class CatalogProgram {
 	                System.out.println("Enter crop to create a new item or to add to quantity");
 	                String addCropName = scr.next();
 	                System.out.println("Enter quantity to add of crop");
-	                int addCropQuantity = scr.nextInt();
+	                int addCropQuantity = arrayListMethods.inputValidationInt(scr);
 					arrayListMethods.checkForResizeCrops();
 	                arrayListMethods.addItem(addCropName, addCropQuantity);
 	                break;
@@ -49,7 +51,7 @@ public class CatalogProgram {
 	                System.out.println("Enter a crop to remove from its quantity");
 	                String removeCropName = scr.next();
 	                System.out.println("Enter amount to remove");
-	                int removeCropAmount = scr.nextInt();
+	                int removeCropAmount = arrayListMethods.inputValidationInt(scr);
 	                arrayListMethods.removeItem(removeCropName, removeCropAmount);
 	                break;        
 	            case 4:
@@ -71,7 +73,7 @@ public class CatalogProgram {
 	                System.out.println("Enter customer name to add their name to the log or to add to their quantity");
 	                String addCustomerName = scr.next();
 	                System.out.println("Enter amount of crops taken");
-	                int addCropTaken = scr.nextInt();
+	                int addCropTaken = arrayListMethods.inputValidationInt(scr);
 	                arrayListMethods.addCustomer(addCustomerName, addCropTaken);
 	                break;
 	            case 8:
@@ -109,19 +111,19 @@ public class CatalogProgram {
 				                break;
 			                case "Quantity":
 			                	System.out.println("Enter a new quantity for the customer");
-			                	quantityNew = scr.nextInt();
+			                	quantityNew = arrayListMethods.inputValidationInt(scr);
 			                	arrayListMethods.editCustomerQuantity(nameToChange, quantityNew);
 			                	inputValid = true;
 				                break;
 			                case "quantity":
 			                	System.out.println("Enter a new quantity for the customer");
-			                	quantityNew = scr.nextInt();
+			                	quantityNew = arrayListMethods.inputValidationInt(scr);
 			                	arrayListMethods.editCustomerQuantity(nameToChange, quantityNew);
 			                	inputValid = true;
 				                break;
 			                case "QUANTITY":
 			                	System.out.println("Enter a new quantity for the customer");
-			                	quantityNew = scr.nextInt();
+			                	quantityNew = arrayListMethods.inputValidationInt(scr);
 			                	arrayListMethods.editCustomerQuantity(nameToChange, quantityNew);
 			                	inputValid = true;
 				                break;
@@ -146,12 +148,15 @@ public class CatalogProgram {
 	            	customerQueue.showQueue();
 	                break;
 	            case 14:
-	                System.out.println("Upload Files");
-	                break;
+	            	System.out.println("Save files");
+	            	arrayListMethods.saveArrayFiles();
+	            	customerQueue.saveQueueFiles();
+	            	break;
 	            case 15:
-	                System.out.println("Exiting");
+	                System.out.println("Exiting and saving");
+	            	arrayListMethods.saveArrayFiles();
+	            	customerQueue.saveQueueFiles();
 	                exitProgram = true;
-	                
 	                break;        
 	            default:
 	                System.out.println("Invalid Selection. Bypassed Input Validation. Exiting Program");
@@ -182,7 +187,7 @@ public class CatalogProgram {
         System.out.println("\n11 - Add customer to customer queue");
         System.out.println("\n12 - Process next customer");
         System.out.println("\n13 - View customer queue");
-        System.out.println("\n14 - Upload files");
+        System.out.println("\n14 - Save files");
         System.out.println("\n15 - Exit Program");
         
 
