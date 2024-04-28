@@ -125,6 +125,7 @@ public class ArrayListMethods {
   }
 
   public void searchCustomer(String customerName) {
+    // finds customer if they do not exist 
     int index = customerNames.indexOf(customerName);
     if (index != -1) {
       System.out.println(customerName + " stock: " + customerQuantity.get(index));
@@ -135,6 +136,7 @@ public class ArrayListMethods {
   }
 
   public void addCustomer(String customerName, int quantity){
+    // adds the customer if they do not exist, add to quantity if they do. 
     int index = customerNames.indexOf(customerName);
     if (index != -1) {
       customerQuantity.set(index, customerQuantity.get(index) + quantity);
@@ -148,6 +150,7 @@ public class ArrayListMethods {
   }
 
   public void removeCustomer(String customerName) {
+    //remove customer if they exist in the catalog. otherwise return that it is not found. 
     int index = customerNames.indexOf(customerName);
     if (index != -1) {
       customerNames.remove(index);
@@ -160,6 +163,7 @@ public class ArrayListMethods {
   }
 
   public void editCustomerName(String customerName, String newCustomerName) {
+    // similar to edit item, edit names of customers if they exist in the catalog. 
     int index = customerNames.indexOf(customerName);
     if (index != -1) {
       customerNames.set(index, newCustomerName);
