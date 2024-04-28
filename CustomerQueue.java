@@ -1,12 +1,15 @@
 import java.util.LinkedList;
 import java.util.Queue;
-
+import java.util.Scanner;
+import java.io.*;
 /*
  *   Queue to track incoming customers waiting for a request or any line
  *    scenarios where customers would wait
  */
 public class CustomerQueue {
     private Queue<String> customerQueue;
+    File folder = new File("Docs");
+    File customerQueueFile = new File(folder, "customerQueue.txt");
 
     //Public constructor
     public CustomerQueue() {
