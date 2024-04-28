@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 
 public class ArrayListMethods {
+  //All initializations of lists, max array sizes, scanner, and file locations
   private static List<String> itemNames;
   private static List<Integer> quantityOfItem;
   private static List<String> customerNames;
@@ -21,14 +22,15 @@ public class ArrayListMethods {
   File customerLogQuantity = new File(folder, "customerLogQuantities.txt");
   File cropCatalogQuantity = new File(folder, "cropCatalogQuantities.txt");
   
-
+  //Public constructor
   public ArrayListMethods() {
     itemNames = new ArrayList<>(MAX_CROPS);
     quantityOfItem = new ArrayList<>(MAX_CROPS);
     customerNames = new ArrayList<>(MAX_CUSTOMERS);
     customerQuantity = new ArrayList<>(MAX_CUSTOMERS);
   }
-      
+
+  //When called searches for crop in parameters	
   public void searchItem(String itemName) {
     int index = itemNames.indexOf(itemName);
     if (index != -1) {
@@ -38,7 +40,8 @@ public class ArrayListMethods {
     }
 
   }
-      
+
+  //Adds crop to catalog
   public void addItem(String itemName, int quantity) {
     int index = itemNames.indexOf(itemName);
     if (index != -1) {
@@ -51,7 +54,7 @@ public class ArrayListMethods {
     }
   }
 
-
+  //Removed a certain amount of quantity from crop or entire crop 
   public void removeItem(String itemName, int quantity) {
     int index = itemNames.indexOf(itemName);
     if (index != -1) {
@@ -102,6 +105,7 @@ public class ArrayListMethods {
     }
   }
 
+  //Edit a crops name
   public void editItem(String itemName, String newItemName) {
     int index = itemNames.indexOf(itemName);
     // check if the item exists in the catalog. If it does, edit the name, otherwise inform user that item does not exist in catalog. 
@@ -112,7 +116,8 @@ public class ArrayListMethods {
       System.out.println("Item " + itemName + " not found in catalog.");
     }
   }
-
+  
+  //Shows crop catalog
   public void showCatalog() {
     System.out.println("Contents of Catalog:");
     //use a for loop to print the catalog and indicate empty spaces by mentioning they are empty. 
@@ -124,6 +129,7 @@ public class ArrayListMethods {
     }
   }
 
+  
   public void searchCustomer(String customerName) {
     // finds customer if they do not exist 
     int index = customerNames.indexOf(customerName);
@@ -174,6 +180,7 @@ public class ArrayListMethods {
     }
   }
 
+  //Edits customer quantity 
   public void editCustomerQuantity(String customerName, int newCustomerAmount) {
     int index = customerNames.indexOf(customerName);
     int customerAmount = 0;
@@ -186,6 +193,7 @@ public class ArrayListMethods {
     }
  }
 
+  //Shows customer log displaying name and quantity taken
   public void showCustomerLog() {
     System.out.println("Contents of Customer Log:");
     for (int i = 0; i < customerNames.size(); i++) {
@@ -196,6 +204,7 @@ public class ArrayListMethods {
     }
   }
 
+  //checks if a resize is needed for the array
   public void checkForResizeCrops() {
     if (itemNames.size() >= resizable_crops);
       //resizable_crops *= 2;
@@ -203,6 +212,7 @@ public class ArrayListMethods {
       //((ArrayList<Integer>)quantityOfItem).ensureCapacity(resizable_crops);
   }
 
+  //checks if a resize is needed for the array
   public void checkForResizeCustomers() {
     if (customerNames.size() >= resizable_customers)
       resizable_customers *= 2;
@@ -210,6 +220,7 @@ public class ArrayListMethods {
       ((ArrayList<Integer>)customerQuantity).ensureCapacity(resizable_customers);
   }
 
+  //Used for integer user inputs to make sure only integers in a certain range are accepted
   public int inputValidationInt(Scanner choice){
     int input;
     do {
@@ -221,7 +232,8 @@ public class ArrayListMethods {
     } while (input < 0);  
     return input;
   }
-  
+
+  //Saves ArrayLists in txt files for further use
   public void saveArrayFiles() {
 	  createNewFiles(customerLogNames);
 	  createNewFiles(customerLogQuantity);
@@ -283,6 +295,7 @@ public class ArrayListMethods {
 
   }
 
+  //Uploads txt files storing Array information to use previously saved information
   public void uploadArrayFiles(){
     
   	createNewFiles(customerLogNames);
@@ -345,6 +358,7 @@ public class ArrayListMethods {
    	}
   }
 
+  //Creates a new file if not already created
   public void createNewFiles(File fileName){
   	try {
       		if (fileName.createNewFile()) {
