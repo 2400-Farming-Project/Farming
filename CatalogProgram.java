@@ -9,27 +9,27 @@ public class CatalogProgram {
         ArrayListMethods arrayListMethods = new ArrayListMethods();
         
         CustomerQueue customerQueue = new CustomerQueue();
-        
+        	
         boolean exitProgram = false;
-        
-        printMenu();
-       
-		customerQueue.uploadQueueFiles();
-		arrayListMethods.uploadArrayFiles();
+                
+	printMenu();
+
+	customerQueue.uploadQueueFiles();
+	arrayListMethods.uploadArrayFiles();
 		
         int numChoice = 0;
         do {
-	        do {
-	            try {
-	                System.out.println("\nEnter a menu option: ");
-	                numChoice = scr.nextInt();
-	                if (numChoice < 1 || numChoice > 15)
-	                    System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
-	            } catch (InputMismatchException e) {
-	                System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
-	                scr.next();
-	                numChoice = 0;
-	            }    
+		do {
+	        	try {
+	                	System.out.println("\nEnter a menu option: ");
+	                	numChoice = scr.nextInt();
+	                	if (numChoice < 1 || numChoice > 15)
+	                    	System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
+	            	} catch (InputMismatchException e) {
+	                	System.out.println("\nInvalid Selection. Please Choose Again (1-16)");
+	                	scr.next();
+	                	numChoice = 0;
+	            	}    
 	        
 	        } while ((numChoice < 1 || numChoice > 15)); 
 
@@ -132,7 +132,6 @@ public class CatalogProgram {
 		                }
 	                } while (inputValid == false);
 	                break;       
-	           
 	            case 10:	
 	                arrayListMethods.showCustomerLog();
 	                break;
@@ -172,7 +171,7 @@ public class CatalogProgram {
     }
 
     public static void printMenu(){
-        System.out.println("Lopez Urban Farm Catalog");
+    	System.out.println("Lopez Urban Farm Catalog");
         System.out.println("\nMENU - Enter a number to proceed");
         System.out.println("\n1 - Search Crop Catalog");
         System.out.println("\n2 - Add new crop or to existing amount");
