@@ -181,7 +181,7 @@ public class CatalogProgram {
 	                break;  
 		    //Default case, invalid input 
 	            default:
-	                System.out.println("Invalid Selection. Bypassed Input Validation.);
+	                System.out.println("Invalid Selection. Bypassed Input Validation.");
 	                break;
 	        }
         } while (exitProgram == false); //loop for program
