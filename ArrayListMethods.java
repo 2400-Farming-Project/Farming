@@ -53,7 +53,7 @@ public class ArrayListMethods {
 
 
   public void removeItem(String itemName, int quantity) {
-		int index = itemNames.indexOf(itemName);
+    int index = itemNames.indexOf(itemName);
     if (index != -1) {
       int currentQuantity = quantityOfItem.get(index);
       if (currentQuantity >= quantity) {
