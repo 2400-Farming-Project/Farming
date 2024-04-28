@@ -11,7 +11,7 @@ Ryan Cheng - ryancheng@cpp.edu - boop213
 
 Angel Ramos - angelramos@cpp.edu - Angel-Ramos9
 
-Mon Sarder - email - GHusername
+Mon Sarder - mssarder@cpp.edu - Monsterous3110
 
 Emmanuel Ricardo - email - GHusername
 
