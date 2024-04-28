@@ -1,6 +1,8 @@
 import java.util.List;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 
 public class ArrayListMethods {
@@ -13,13 +15,18 @@ public class ArrayListMethods {
   private int resizable_crops = MAX_CROPS;
   private int resizable_customers = MAX_CUSTOMERS;
   Scanner scr = new Scanner(System.in);
+  File folder = new File("Docs");
+  File customerLogNames = new File(folder, "customerLogNames.txt");
+  File cropCatalogNames = new File(folder, "cropCatalogNames.txt");
+  File customerLogQuantity = new File(folder, "customerLogQuantities.txt");
+  File cropCatalogQuantity = new File(folder, "cropCatalogQuantities.txt");
+  
 
   public ArrayListMethods() {
     itemNames = new ArrayList<>(MAX_CROPS);
     quantityOfItem = new ArrayList<>(MAX_CROPS);
     customerNames = new ArrayList<>(MAX_CUSTOMERS);
     customerQuantity = new ArrayList<>(MAX_CUSTOMERS);
-      
   }
       
   public void searchItem(String itemName) {
@@ -91,7 +98,7 @@ public class ArrayListMethods {
       }
       
     }
-	}
+  }
 
   public void editItem(String itemName, String newItemName) {
     int index = itemNames.indexOf(itemName);
@@ -206,6 +213,144 @@ public class ArrayListMethods {
     } while (input < 0);  
     return input;
   }
+  
+  public void saveArrayFiles() {
+	  createNewFiles(customerLogNames);
+	  createNewFiles(customerLogQuantity);
+	  createNewFiles(cropCatalogNames);
+	  createNewFiles(cropCatalogQuantity);
+		  
+	  try {
+		PrintStream writer = new PrintStream(customerLogNames);
+		for (int index = 0; index < customerNames.size(); index++) {
+			if (customerNames.get(index) != null) {
+				writer.println(customerNames.get(index));
+			}
+		}
+		writer.close();
+	  } catch (FileNotFoundException e) {
+		  System.out.println("Customer Log names not saved, error has occurred");
+		e.printStackTrace();
+	  }
+	  
+	  try {
+		PrintStream writer = new PrintStream(cropCatalogNames);
+		for (int index = 0; index < itemNames.size(); index++) {
+			if (itemNames.get(index) != null) {
+				writer.println(itemNames.get(index));
+			}
+		}
+		writer.close();
+	  } catch (FileNotFoundException e) {
+		  System.out.println("Crop Catalog names not saved, error has occurred");
+		  e.printStackTrace();
+	  }
+	  
+	  try {
+		PrintStream writer = new PrintStream(customerLogQuantity);
+		for (int index = 0; index < customerQuantity.size(); index++) {
+			if (customerQuantity.get(index) != null) {
+				writer.println(customerQuantity.get(index));
+			}
+		}
+		writer.close();
+	  } catch (FileNotFoundException e) {
+		  System.out.println("Customer Log quantities not saved, error has occurred");
+		  e.printStackTrace();
+	  }
+	  
+	  try {
+		PrintStream writer = new PrintStream(cropCatalogQuantity);
+		for (int index = 0; index < quantityOfItem.size(); index++) {
+			if (quantityOfItem.get(index) != null) {
+				writer.println(quantityOfItem.get(index));
+			}
+		}
+		writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Crop Catalog quantities not saved, error has occurred");
+			e.printStackTrace();
+		}
+	  
+
+  }
+
+  public void uploadArrayFiles(){
+    
+  	createNewFiles(customerLogNames);
+    
+    	Scanner fileReader;
+	try {
+		fileReader = new Scanner(customerLogNames);
+		while(fileReader.hasNext()){
+			String currentName = fileReader.next();
+			customerNames.add(currentName);
+		}
+		fileReader.close();
+	} catch (FileNotFoundException e) {
+		System.out.println("File customerQueue not found");
+		e.printStackTrace();
+	}
+
+    	createNewFiles(cropCatalogNames);
+    
+    	try {
+    		fileReader = new Scanner(cropCatalogNames);
+      		while(fileReader.hasNext()){
+        		String currentName = fileReader.next();
+			itemNames.add(currentName);
+      		}
+      		fileReader.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("File customerQueue not found");
+      		e.printStackTrace();
+    	}
+
+    	createNewFiles(customerLogQuantity);
+    
+    	try {
+    		fileReader = new Scanner(customerLogQuantity);
+      		while(fileReader.hasNext()){
+        		String currentNumberString = fileReader.next();
+        		int currentNumber = Integer.parseInt(currentNumberString);
+        		customerQuantity.add(currentNumber);
+      		}
+      		fileReader.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("File customerQueue not found");
+      		e.printStackTrace();
+   	}
+
+    	createNewFiles(cropCatalogQuantity);
+    
+    	try {
+    		fileReader = new Scanner(cropCatalogQuantity);
+      		while(fileReader.hasNext()){
+        		String currentNumberString = fileReader.next();
+        		int currentNumber = Integer.parseInt(currentNumberString);
+        		quantityOfItem.add(currentNumber);
+      		}
+      		fileReader.close();
+    	} catch (FileNotFoundException e) {
+      		System.out.println("File customerQueue not found");
+      		e.printStackTrace();
+   	}
+  }
+
+  public void createNewFiles(File fileName){
+  	try {
+      		if (fileName.createNewFile()) {
+      			//System.out.println("File customerLogNames created");
+      		} else {
+      			//System.out.println("File already exists");
+      		}
+    	} catch (IOException e) {
+      		System.out.println("An error occurred while creating the file.");
+      		e.printStackTrace();
+    	}
+  }
+
+ 
 
   
 }
