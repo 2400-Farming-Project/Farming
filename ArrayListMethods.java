@@ -57,9 +57,11 @@ public class ArrayListMethods {
     if (index != -1) {
       int currentQuantity = quantityOfItem.get(index);
       if (currentQuantity >= quantity) {
+	// subtract quantitiy if there is more avaialable than that being removed.       
         quantityOfItem.set(index, currentQuantity - quantity);
         System.out.println(quantity + " " + itemName + " removed from the catalog. Quantity left: " + quantityOfItem.get(index));
         if (quantityOfItem.get(index) == 0) {
+	  // check if the user wants to remove the item from the catalog. 	
           System.out.println("Do you want to remove " + itemName + " from the Catalog (Yes or No)");
           String removeChoice = scr.next();
           switch (removeChoice) {
@@ -102,6 +104,7 @@ public class ArrayListMethods {
 
   public void editItem(String itemName, String newItemName) {
     int index = itemNames.indexOf(itemName);
+    // check if the item exists in the catalog. If it does, edit the name, otherwise inform user that item does not exist in catalog. 
     if (index != -1) {
       itemNames.set(index, newItemName);
       System.out.println(itemName + " renamed to " + newItemName);
@@ -112,6 +115,7 @@ public class ArrayListMethods {
 
   public void showCatalog() {
     System.out.println("Contents of Catalog:");
+    //use a for loop to print the catalog and indicate empty spaces by mentioning they are empty. 
     for (int i = 0; i < itemNames.size(); i++) {
         System.out.println(itemNames.get(i) + " stock: " + quantityOfItem.get(i));
     }
