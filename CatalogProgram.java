@@ -1,24 +1,28 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+//Runs ArrayList and Queue methods and takes user input
 public class CatalogProgram {
     public static void main(String[] args) {
         Scanner scr = new Scanner(System.in);
-        
+
+	//References to other methods
         ArrayListMethods arrayListMethods = new ArrayListMethods();
-        
         CustomerQueue customerQueue = new CustomerQueue();
         	
-        boolean exitProgram = false;
+        //boolean to exit program
+	boolean exitProgram = false;
                 
+	//Prints menu
 	printMenu();
 
+	//Uploads previously saved txt files 
 	customerQueue.uploadQueueFiles();
 	arrayListMethods.uploadArrayFiles();
 		
         int numChoice = 0;
         do {
+		//initial input validation for menu
 		do {
 	        	try {
 	                	System.out.println("\nEnter a menu option: ");
@@ -33,12 +37,15 @@ public class CatalogProgram {
 	        
 	        } while ((numChoice < 1 || numChoice > 15)); 
 
+		//All menu cases on a switch, do while loop does not end until exit program is chosen
 	        switch (numChoice) {
+		    //Search option for crops		
 	            case 1:
 	                System.out.println("Enter a crop to search for: ");
 	                String searchCrop = scr.next();
 	                arrayListMethods.searchItem(searchCrop);
 	                break;
+		    //Add option for crops
 	            case 2:
 	                System.out.println("Enter crop to create a new item or to add to quantity");
 	                String addCropName = scr.next();
@@ -47,13 +54,15 @@ public class CatalogProgram {
 					arrayListMethods.checkForResizeCrops();
 	                arrayListMethods.addItem(addCropName, addCropQuantity);
 	                break;
+		    //Remove option for crops
 	            case 3:
 	                System.out.println("Enter a crop to remove from its quantity");
 	                String removeCropName = scr.next();
 	                System.out.println("Enter amount to remove");
 	                int removeCropAmount = arrayListMethods.inputValidationInt(scr);
 	                arrayListMethods.removeItem(removeCropName, removeCropAmount);
-	                break;        
+	                break;    
+		    //Edit name option for crops
 	            case 4:
 	                System.out.println("Enter an item to change its name: ");    
 	                String itemNameToChange = scr.next();
@@ -61,14 +70,17 @@ public class CatalogProgram {
 	                String newItemName = scr.next();
 	                arrayListMethods.editItem(itemNameToChange, newItemName);
 	                break;
+		    //Show crop catalog option
 	            case 5:
 	                arrayListMethods.showCatalog();
 	                break;
+		    //Search option for customers
 	            case 6:
 	            	System.out.println("Enter a customer name to search");
 	            	String customerName = scr.next();
 	            	arrayListMethods.searchCustomer(customerName);
 	                break;
+		    //Add customer option
 	            case 7:
 	                System.out.println("Enter customer name to add their name to the log or to add to their quantity");
 	                String addCustomerName = scr.next();
@@ -76,20 +88,24 @@ public class CatalogProgram {
 	                int addCropTaken = arrayListMethods.inputValidationInt(scr);
 	                arrayListMethods.addCustomer(addCustomerName, addCropTaken);
 	                break;
+		    //Remove customer option
 	            case 8:
 	                System.out.println("Enter a name to completely remove a customer from log");
 	                String removeCustomerName = scr.next();
 	                arrayListMethods.removeCustomer(removeCustomerName);
 	                break;
+		    //Edit customer information option, name or quantity
 	            case 9:
 	                System.out.println("Enter a customer name to edit their information");
 	                String nameToChange = scr.next();
 	                String newNameCustomer;
 	                int quantityNew;
 	                boolean inputValid = false;
+			//Input validation for customer option choice
 	                do {
 	                	System.out.println("Do you want to edit their name or quantity?");
 		                String decision = scr.next();
+				//Switch cases for different spellings
 		                switch (decision) {
 			                case "name":
 			                	System.out.println("Enter a new name for the customer");
@@ -132,44 +148,52 @@ public class CatalogProgram {
 		                }
 	                } while (inputValid == false);
 	                break;       
+		    //Show customer log option
 	            case 10:	
 	                arrayListMethods.showCustomerLog();
 	                break;
+		    //Add customer to waiting queue option
 	            case 11:
 	                System.out.println("Enter a customer name to add to queue");
 	                String queueName = scr.next();
 	                customerQueue.addCustomer(queueName);
 	                break;
+		    //Check in a customer from queue option
 	            case 12:
 	                System.out.println("Checking in next customer: " + customerQueue.getNextCustomer());
 	                break;
+		    //Show queue option
 	            case 13:
 	            	customerQueue.showQueue();
 	                break;
+		    //Manual Save option
 	            case 14:
 	            	System.out.println("Save files");
 	            	arrayListMethods.saveArrayFiles();
 	            	customerQueue.saveQueueFiles();
 	            	break;
+		    //Exit program option
 	            case 15:
 	                System.out.println("Exiting and saving");
 	            	arrayListMethods.saveArrayFiles();
 	            	customerQueue.saveQueueFiles();
 	                exitProgram = true;
-	                break;        
+	                break;  
+		    //Default case, invalid input 
 	            default:
-	                System.out.println("Invalid Selection. Bypassed Input Validation. Exiting Program");
-	                //System.exit(InputMismatchException);
+	                System.out.println("Invalid Selection. Bypassed Input Validation.);
 	                break;
 	        }
-        } while (exitProgram == false);
-        
+        } while (exitProgram == false); //loop for program
+
+	//exits program if true
         if (exitProgram == true) {
         	System.exit(0);
         }
         scr.close();
     }
 
+    //print menu method
     public static void printMenu(){
     	System.out.println("Lopez Urban Farm Catalog");
         System.out.println("\nMENU - Enter a number to proceed");
