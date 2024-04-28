@@ -207,9 +207,9 @@ public class ArrayListMethods {
   //checks if a resize is needed for the array
   public void checkForResizeCrops() {
     if (itemNames.size() >= resizable_crops);
-      //resizable_crops *= 2;
-      //((ArrayList<String>)itemNames).ensureCapacity(resizable_crops);
-      //((ArrayList<Integer>)quantityOfItem).ensureCapacity(resizable_crops);
+      resizable_crops *= 2;
+      ((ArrayList<String>)itemNames).ensureCapacity(resizable_crops);
+      ((ArrayList<Integer>)quantityOfItem).ensureCapacity(resizable_crops);
   }
 
   //checks if a resize is needed for the array
