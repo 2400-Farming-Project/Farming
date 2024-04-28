@@ -11,8 +11,8 @@ public class ArrayListMethods {
   private static List<Integer> quantityOfItem;
   private static List<String> customerNames;
   private static List<Integer> customerQuantity;
-  private final int MAX_CROPS = 2;
-  private final int MAX_CUSTOMERS = 2;
+  private final int MAX_CROPS = 100;
+  private final int MAX_CUSTOMERS = 100;
   private int resizable_crops = MAX_CROPS;
   private int resizable_customers = MAX_CUSTOMERS;
   Scanner scr = new Scanner(System.in);
