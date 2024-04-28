@@ -235,11 +235,13 @@ public class ArrayListMethods {
 
   //Saves ArrayLists in txt files for further use
   public void saveArrayFiles() {
+	  //Creates new files for each array
 	  createNewFiles(customerLogNames);
 	  createNewFiles(customerLogQuantity);
 	  createNewFiles(cropCatalogNames);
 	  createNewFiles(cropCatalogQuantity);
 		  
+	  //Attempts to write customerNames array onto the txt file if it exists
 	  try {
 		PrintStream writer = new PrintStream(customerLogNames);
 		for (int index = 0; index < customerNames.size(); index++) {
@@ -248,11 +250,13 @@ public class ArrayListMethods {
 			}
 		}
 		writer.close();
+          //If file is not found throws error
 	  } catch (FileNotFoundException e) {
 		  System.out.println("Customer Log names not saved, error has occurred");
 		e.printStackTrace();
 	  }
-	  
+
+	  //Attempts to write cropNames array onto the txt file if it exists
 	  try {
 		PrintStream writer = new PrintStream(cropCatalogNames);
 		for (int index = 0; index < itemNames.size(); index++) {
@@ -261,11 +265,13 @@ public class ArrayListMethods {
 			}
 		}
 		writer.close();
+	  //If file is not found throws error
 	  } catch (FileNotFoundException e) {
 		  System.out.println("Crop Catalog names not saved, error has occurred");
 		  e.printStackTrace();
 	  }
-	  
+
+	  //Attempts to write customerQuantity array onto the txt file if it exists
 	  try {
 		PrintStream writer = new PrintStream(customerLogQuantity);
 		for (int index = 0; index < customerQuantity.size(); index++) {
@@ -274,11 +280,13 @@ public class ArrayListMethods {
 			}
 		}
 		writer.close();
+	  //If file is not found throws error
 	  } catch (FileNotFoundException e) {
 		  System.out.println("Customer Log quantities not saved, error has occurred");
 		  e.printStackTrace();
 	  }
-	  
+
+	  //Attempts to write cropQuantity array onto the txt file if it exists
 	  try {
 		PrintStream writer = new PrintStream(cropCatalogQuantity);
 		for (int index = 0; index < quantityOfItem.size(); index++) {
@@ -287,6 +295,7 @@ public class ArrayListMethods {
 			}
 		}
 		writer.close();
+		//If file is not found throws error
 		} catch (FileNotFoundException e) {
 			System.out.println("Crop Catalog quantities not saved, error has occurred");
 			e.printStackTrace();
@@ -297,10 +306,13 @@ public class ArrayListMethods {
 
   //Uploads txt files storing Array information to use previously saved information
   public void uploadArrayFiles(){
-    
+
+	//checks to see if this file exists  
   	createNewFiles(customerLogNames);
-    
-    	Scanner fileReader;
+
+	  
+    	Scanner fileReader; //initializes a scanner to read files
+	//Attempts to read customerLogNames and add each name to the appropriate array
 	try {
 		fileReader = new Scanner(customerLogNames);
 		while(fileReader.hasNext()){
@@ -308,13 +320,16 @@ public class ArrayListMethods {
 			customerNames.add(currentName);
 		}
 		fileReader.close();
+	//If file is not found throws error
 	} catch (FileNotFoundException e) {
 		System.out.println("File customerQueue not found");
 		e.printStackTrace();
 	}
 
+	//checks to see if this file exists  
     	createNewFiles(cropCatalogNames);
-    
+
+	//Attempts to read cropCatalogNames and add each name to the appropriate array  
     	try {
     		fileReader = new Scanner(cropCatalogNames);
       		while(fileReader.hasNext()){
@@ -322,13 +337,16 @@ public class ArrayListMethods {
 			itemNames.add(currentName);
       		}
       		fileReader.close();
+	//If file is not found throws error
     	} catch (FileNotFoundException e) {
     		System.out.println("File customerQueue not found");
       		e.printStackTrace();
     	}
 
+	//checks to see if this file exists  
     	createNewFiles(customerLogQuantity);
-    
+
+	//Attempts to read customerLogQuantity and add each name to the appropriate array
     	try {
     		fileReader = new Scanner(customerLogQuantity);
       		while(fileReader.hasNext()){
@@ -337,13 +355,16 @@ public class ArrayListMethods {
         		customerQuantity.add(currentNumber);
       		}
       		fileReader.close();
+	//If file is not found throws error
     	} catch (FileNotFoundException e) {
     		System.out.println("File customerQueue not found");
       		e.printStackTrace();
    	}
 
+	//checks to see if this file exists    
     	createNewFiles(cropCatalogQuantity);
-    
+    	
+	//Attempts to read cropCatalogQuantity and add each name to the appropriate array
     	try {
     		fileReader = new Scanner(cropCatalogQuantity);
       		while(fileReader.hasNext()){
@@ -352,6 +373,7 @@ public class ArrayListMethods {
         		quantityOfItem.add(currentNumber);
       		}
       		fileReader.close();
+	//If file is not found throws error
     	} catch (FileNotFoundException e) {
       		System.out.println("File customerQueue not found");
       		e.printStackTrace();
